@@ -1,0 +1,25 @@
+main: com.propr.propressentials.ProprEssentials
+name: proprEssentials
+version: 0.1
+author: propr
+
+commands:
+  heal:
+    description: Heal and feed yourself
+    permission: propressentials.heal
+    usage: /heal
+  tp:
+    description: Teleport yourself (or someone else) to another player
+    permission: propressentials.tp
+    usage: "/tp <Optional: Player1> <Required: Player2>"
+  tphere:
+    description: Teleport another player to yourself
+    permission: propressentials.tphere
+    usage: /tphere <Player>
+  fly:
+    description: Toggle fly mode for yourself
+    permission: propressentials.fly
+    usage: /fly
+  motd:
+    description: Show the message of the day
+    usage: /motd
