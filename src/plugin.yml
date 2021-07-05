@@ -9,9 +9,11 @@ commands:
     permission: propressentials.heal
     usage: /heal
   tp:
-    description: Teleport yourself (or someone else) to another player
+    description: Teleport you or someone else to another player
+    aliases:
+      - teleport
     permission: propressentials.tp
-    usage: "/tp <Optional: Player1> <Required: Player2>"
+    usage: "/tp <Optional: Player1> <Player2>"
   tphere:
     description: Teleport another player to yourself
     permission: propressentials.tphere
@@ -23,3 +25,7 @@ commands:
   motd:
     description: Show the message of the day
     usage: /motd
+  gamemode:
+    description: Set your's or someone else's gamemode
+    permission: propressentials.gamemode
+    usage: "/gamemode <s/c/a/sp> <Optional: Player>"
