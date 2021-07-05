@@ -8,8 +8,11 @@ import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.plugin.java.JavaPlugin;
 import com.propr.propressentials.commands.*;
 import com.propr.propressentials.commands.teleport.*;
+import com.propr.propressentials.commands.tabcompletion.*;
 
 import java.io.*;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class ProprEssentials extends JavaPlugin implements Listener {
 
@@ -18,11 +21,14 @@ public class ProprEssentials extends JavaPlugin implements Listener {
 
         getLogger().info("[proprEssentials] Starting Plugin...");
         Bukkit.getPluginManager().registerEvents(this, this);
-        this.getCommand("heal").setExecutor(new heal());
+        this.getCommand("heal").setExecutor(new Heal());
         this.getCommand("tphere").setExecutor(new tphere());
         this.getCommand("tp").setExecutor(new tp());
-        this.getCommand("fly").setExecutor(new fly());
-        this.getCommand("motd").setExecutor(new motd());
+        this.getCommand("tp").setAliases(Stream.of("teleport").collect(Collectors.toList()));
+        this.getCommand("fly").setExecutor(new Fly());
+        this.getCommand("motd").setExecutor(new Motd());
+        this.getCommand("gamemode").setExecutor(new Gamemode());
+        this.getCommand("gamemode").setTabCompleter(new GamemodeTabCompletion());
     }
 
     @Override
