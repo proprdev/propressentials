@@ -8,7 +8,7 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import java.io.IOException;
 
-public class motd implements CommandExecutor {
+public class Motd implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
 
@@ -18,10 +18,13 @@ public class motd implements CommandExecutor {
                     ChatColor.RED + "\nCommand name: /tp | Usage: " + Bukkit.getPluginCommand("tp").getUsage() + " | Permissions: " + Bukkit.getPluginCommand("tp").getPermission() +
                     ChatColor.GREEN + "\nCommand name: /tphere | Usage: " + Bukkit.getPluginCommand("tphere").getUsage() + " | Permissions: " + Bukkit.getPluginCommand("tphere").getPermission() +
                     ChatColor.BLUE + "\nCommand name: /fly | Usage: " + Bukkit.getPluginCommand("fly").getUsage() + " | Permissions: " + Bukkit.getPluginCommand("fly").getPermission() +
-                    ChatColor.GRAY + "\nCommand name: /motd | Usage: " + Bukkit.getPluginCommand("motd").getUsage() + " | Permissions: " + Bukkit.getPluginCommand("motd").getPermission());
+                    ChatColor.GRAY + "\nCommand name: /motd | Usage: " + Bukkit.getPluginCommand("motd").getUsage() + " | Permissions: " + Bukkit.getPluginCommand("motd").getPermission() +
+                    ChatColor.DARK_PURPLE + "\nCommand name: /gamemode | Usage: " + Bukkit.getPluginCommand("gamemode").getUsage() + " | Permissions: " + Bukkit.getPluginCommand("gamemode").getPermission());
         } catch (IOException e) {
             Bukkit.getServer().broadcastMessage(ChatColor.RED + "Shit fucked up");
         }
+
+
 
         return true;
     }
