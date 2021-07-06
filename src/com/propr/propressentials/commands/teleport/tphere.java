@@ -20,23 +20,17 @@ public class tphere implements CommandExecutor {
 
             ProprEssentials.logCommand(host, label, args);
 
-            if (host.hasPermission("propressentials.tphere")) {
-
-                if (args.length == 1) {
-                    if (Bukkit.getPlayer(args[0]) != null) {
-                        guest = Bukkit.getPlayer(args[0]);
-                        if (guest == null) throw new AssertionError();
-                        guest.teleport(host.getLocation());
-                        host.sendMessage("Teleported " + guest.getName() + " to you");
-                    } else {
-                        host.sendMessage(ChatColor.RED + args[0] + " is not online!");
-                    }
+            if (args.length == 1) {
+                if (Bukkit.getPlayer(args[0]) != null) {
+                    guest = Bukkit.getPlayer(args[0]);
+                    if (guest == null) throw new AssertionError();
+                    guest.teleport(host.getLocation());
+                    host.sendMessage("Teleported " + guest.getName() + " to you");
                 } else {
-                    host.sendMessage(ChatColor.RED + Bukkit.getPluginCommand("tphere").getUsage());
+                    host.sendMessage(ChatColor.RED + args[0] + " is not online!");
                 }
-
             } else {
-                host.sendMessage("You do not have permission to run this command");
+                host.sendMessage(ChatColor.RED + Bukkit.getPluginCommand("tphere").getUsage());
             }
 
         }

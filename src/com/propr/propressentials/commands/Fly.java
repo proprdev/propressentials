@@ -16,18 +16,14 @@ public class Fly implements CommandExecutor {
 
             ProprEssentials.logCommand(player, label, args);
 
-            if (player.hasPermission("propressentials.fly")) {
-                if (player.isFlying()) {
-                    player.setFlying(false);
-                    player.setAllowFlight(false);
-                    player.sendMessage(ChatColor.GREEN + "You are no longer flying");
-                } else if (!player.isFlying()) {
-                    player.setAllowFlight(true);
-                    player.setFlying(true);
-                    player.sendMessage(ChatColor.GREEN + "You are now flying");
-                }
-            } else {
-                player.sendMessage("You do not have permission to run this command");
+            if (player.isFlying()) {
+                player.setFlying(false);
+                player.setAllowFlight(false);
+                player.sendMessage(ChatColor.GREEN + "You are no longer flying");
+            } else if (!player.isFlying()) {
+                player.setAllowFlight(true);
+                player.setFlying(true);
+                player.sendMessage(ChatColor.GREEN + "You are now flying");
             }
 
         }

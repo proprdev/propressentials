@@ -17,13 +17,9 @@ public class Heal implements CommandExecutor {
 
             ProprEssentials.logCommand(player, label, args);
 
-            if (player.hasPermission("propressentials.heal")) {
-                player.setHealth(20);
-                player.setFoodLevel(20);
-                player.sendMessage(ChatColor.GREEN + "Healed and fed");
-            } else {
-                player.sendMessage("You do not have permission to run this command");
-            }
+            player.setHealth(20);
+            player.setFoodLevel(20);
+            player.sendMessage(ChatColor.GREEN + "Healed and fed");
 
         }
             return true;
