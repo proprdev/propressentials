@@ -19,7 +19,7 @@ public class Gamemode implements CommandExecutor {
             ProprEssentials.logCommand(player, label, args);
 
             if (player.hasPermission("propressentials.gamemode")) {
-                if (args.length == 0) { player.sendMessage(ChatColor.RED + "No arguments supplied"); }
+                if (args.length == 0) { player.sendMessage(ChatColor.RED + Bukkit.getPluginCommand("gamemode").getUsage()); }
                 else if (args.length == 1) {
                     switch (args[0].toLowerCase()) {
                         case "s": case "survival": case "0":

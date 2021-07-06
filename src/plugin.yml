@@ -1,5 +1,5 @@
 main: com.propr.propressentials.ProprEssentials
-name: proprEssentials
+name: ProprEssentials
 version: 0.1
 author: propr
 
@@ -29,3 +29,11 @@ commands:
     description: Set your's or someone else's gamemode
     permission: propressentials.gamemode
     usage: "/gamemode <s/c/a/sp> <Optional: Player>"
+  smite:
+    description: Spawn thunderbolts on a player
+    permission: propressentials.smite
+    usage: "/smite <player>"
+  flyspeed:
+    description: Set your flight speed
+    permission: propressentials.fly
+    usage: /flyspeed <number>
