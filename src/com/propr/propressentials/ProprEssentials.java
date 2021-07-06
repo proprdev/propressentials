@@ -4,6 +4,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.player.AsyncPlayerChatEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.plugin.java.JavaPlugin;
 import com.propr.propressentials.commands.*;
@@ -20,7 +21,9 @@ public class ProprEssentials extends JavaPlugin implements Listener {
     public void onEnable() {
 
         getLogger().info("[proprEssentials] Starting Plugin...");
+
         Bukkit.getPluginManager().registerEvents(this, this);
+
         this.getCommand("heal").setExecutor(new Heal());
         this.getCommand("tphere").setExecutor(new tphere());
         this.getCommand("tp").setExecutor(new tp());
@@ -29,11 +32,21 @@ public class ProprEssentials extends JavaPlugin implements Listener {
         this.getCommand("gamemode").setExecutor(new Gamemode());
         this.getCommand("smite").setExecutor(new Smite());
         this.getCommand("flyspeed").setExecutor(new FlightSpeed());
+        this.getCommand("vanish").setExecutor(new Vanish());
 
         this.getCommand("gamemode").setTabCompleter(new GamemodeTabCompletion());
+        this.getCommand("flyspeed").setTabCompleter(new FlyspeedTabCompletion());
 
         this.getCommand("tp").setAliases(Stream.of("teleport").collect(Collectors.toList()));
         this.getCommand("flyspeed").setAliases(Stream.of("flightspeed").collect(Collectors.toList()));
+
+        this.getCommand("gamemode").setPermission("propressentials.gamemode");
+        this.getCommand("tp").setPermission("propressentials.tp");
+        this.getCommand("tphere").setPermission("propressentials.tphere");
+        this.getCommand("fly").setPermission("propressentials.fly");
+        this.getCommand("flyspeed").setPermission("propressentials.flyspeed");
+        this.getCommand("heal").setPermission("propressentials.heal");
+        this.getCommand("smite").setPermission("propressentials.smite");
     }
 
     @Override
@@ -47,6 +60,11 @@ public class ProprEssentials extends JavaPlugin implements Listener {
 
         Bukkit.dispatchCommand(player, "motd");
         Bukkit.dispatchCommand(player, "plugins");
+    }
+
+    @EventHandler
+    public void onChat(AsyncPlayerChatEvent event) {
+        event.setFormat("{prefix}%s{suffix}: %s");
     }
 
     public static String getServerName() throws IOException {
