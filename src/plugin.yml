@@ -35,5 +35,9 @@ commands:
     usage: "/smite <player>"
   flyspeed:
     description: Set your flight speed
-    permission: propressentials.fly
+    permission: propressentials.flyspeed
     usage: /flyspeed <number>
+  vanish:
+    description: Set yourself to be invisible
+    permission: propressentials.vanish
+    usage: /vanish
