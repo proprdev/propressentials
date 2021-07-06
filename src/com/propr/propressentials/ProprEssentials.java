@@ -24,11 +24,16 @@ public class ProprEssentials extends JavaPlugin implements Listener {
         this.getCommand("heal").setExecutor(new Heal());
         this.getCommand("tphere").setExecutor(new tphere());
         this.getCommand("tp").setExecutor(new tp());
-        this.getCommand("tp").setAliases(Stream.of("teleport").collect(Collectors.toList()));
         this.getCommand("fly").setExecutor(new Fly());
         this.getCommand("motd").setExecutor(new Motd());
         this.getCommand("gamemode").setExecutor(new Gamemode());
+        this.getCommand("smite").setExecutor(new Smite());
+        this.getCommand("flyspeed").setExecutor(new FlightSpeed());
+
         this.getCommand("gamemode").setTabCompleter(new GamemodeTabCompletion());
+
+        this.getCommand("tp").setAliases(Stream.of("teleport").collect(Collectors.toList()));
+        this.getCommand("flyspeed").setAliases(Stream.of("flightspeed").collect(Collectors.toList()));
     }
 
     @Override
@@ -41,6 +46,7 @@ public class ProprEssentials extends JavaPlugin implements Listener {
         Player player = event.getPlayer();
 
         Bukkit.dispatchCommand(player, "motd");
+        Bukkit.dispatchCommand(player, "plugins");
     }
 
     public static String getServerName() throws IOException {
