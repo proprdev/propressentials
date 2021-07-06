@@ -13,10 +13,10 @@ public class FlightSpeed implements CommandExecutor {
             if (args[0].equals("default")) {
                 player.setFlySpeed(0.1f);
             } else {
-                if (!(Float.parseFloat(args[0]) < -1) || !(Float.parseFloat(args[0]) > 1)) {
-                    player.setFlySpeed(Float.parseFloat(args[0]));
-                } else {
+                if ((Float.parseFloat(args[0]) < -1f) || (Float.parseFloat(args[0]) > 1f)) {
                     player.sendMessage("Speed must be between -1 and 1");
+                } else {
+                    player.setFlySpeed(Float.parseFloat(args[0]));
                 }
             }
         }
