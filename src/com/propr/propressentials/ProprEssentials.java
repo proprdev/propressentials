@@ -6,6 +6,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
+import org.bukkit.event.weather.WeatherChangeEvent;
 import org.bukkit.plugin.java.JavaPlugin;
 import com.propr.propressentials.commands.*;
 import com.propr.propressentials.commands.teleport.*;
@@ -31,7 +32,7 @@ public class ProprEssentials extends JavaPlugin implements Listener {
         this.getCommand("motd").setExecutor(new Motd());
         this.getCommand("gamemode").setExecutor(new Gamemode());
         this.getCommand("smite").setExecutor(new Smite());
-        this.getCommand("flyspeed").setExecutor(new FlightSpeed());
+        this.getCommand("flyspeed").setExecutor(new FlySpeed());
         this.getCommand("vanish").setExecutor(new Vanish());
 
         this.getCommand("gamemode").setTabCompleter(new GamemodeTabCompletion());
@@ -67,6 +68,13 @@ public class ProprEssentials extends JavaPlugin implements Listener {
         event.setFormat("{prefix}%s{suffix}: %s");
     }
 
+    @EventHandler
+    public void onRain(WeatherChangeEvent event) {
+        if (event.toWeatherState()) {
+            event.setCancelled(true);
+        }
+    }
+
     public static String getServerName() throws IOException {
         FileInputStream fstream = new FileInputStream(Bukkit.getServer().getWorldContainer().getAbsolutePath() + "/server.properties");
         BufferedReader br = new BufferedReader(new InputStreamReader(fstream));
@@ -80,7 +88,7 @@ public class ProprEssentials extends JavaPlugin implements Listener {
 
         fstream.close();
 
-        return "No server-name";
+        return "No server-name in server.properties";
     }
 
     public static void logCommand(Player player, String label, String[] args) {

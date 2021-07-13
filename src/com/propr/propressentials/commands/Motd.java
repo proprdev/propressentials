@@ -6,25 +6,37 @@ import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Map;
+import java.util.Random;
 
 public class Motd implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
 
-        try {
-            sender.sendMessage(ChatColor.AQUA + "Welcome to " + ProprEssentials.getServerName() + "\nCommands:" +
-                    ChatColor.GOLD + "\nCommand name: /heal | Usage: " + Bukkit.getPluginCommand("heal").getUsage() + " | Permissions: " + Bukkit.getPluginCommand("heal").getPermission() +
-                    ChatColor.RED + "\nCommand name: /tp | Usage: " + Bukkit.getPluginCommand("tp").getUsage() + " | Permissions: " + Bukkit.getPluginCommand("tp").getPermission() +
-                    ChatColor.GREEN + "\nCommand name: /tphere | Usage: " + Bukkit.getPluginCommand("tphere").getUsage() + " | Permissions: " + Bukkit.getPluginCommand("tphere").getPermission() +
-                    ChatColor.BLUE + "\nCommand name: /fly | Usage: " + Bukkit.getPluginCommand("fly").getUsage() + " | Permissions: " + Bukkit.getPluginCommand("fly").getPermission() +
-                    ChatColor.GRAY + "\nCommand name: /motd | Usage: " + Bukkit.getPluginCommand("motd").getUsage() + " | Permissions: " + Bukkit.getPluginCommand("motd").getPermission() +
-                    ChatColor.DARK_PURPLE + "\nCommand name: /gamemode | Usage: " + Bukkit.getPluginCommand("gamemode").getUsage() + " | Permissions: " + Bukkit.getPluginCommand("gamemode").getPermission());
-        } catch (IOException e) {
-            Bukkit.getServer().broadcastMessage(ChatColor.RED + "Shit fucked up");
+        ArrayList<String> commands = new ArrayList<>();
+
+        for (Map.Entry<String, java.util.Map<String, Object>> entry : Bukkit.getPluginManager().getPlugin("ProprEssentials").getDescription().getCommands().entrySet()) {
+            commands.add(entry.getKey());
         }
 
+        StringBuilder motd = new StringBuilder();
+        ChatColor[] colors = new ChatColor[]{ChatColor.AQUA, ChatColor.BLUE, ChatColor.BLACK, ChatColor.DARK_AQUA, ChatColor.DARK_BLUE, ChatColor.DARK_GRAY, ChatColor.DARK_GREEN, ChatColor.DARK_PURPLE, ChatColor.DARK_RED, ChatColor.GOLD, ChatColor.GRAY, ChatColor.GREEN, ChatColor.LIGHT_PURPLE, ChatColor.RED, ChatColor.WHITE, ChatColor.YELLOW};
 
+        try {
+            motd.append(ChatColor.AQUA + "Welcome to " + ProprEssentials.getServerName() + "\nCommands:");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        for (String commandName : commands) {
+            int element = new Random().nextInt(colors.length);
+            motd.append(colors[element] + "\nCommand name: /" + commandName + " | Usage: " + Bukkit.getPluginCommand(commandName).getUsage() + " | Permissions: " + Bukkit.getPluginCommand(commandName).getPermission());
+        }
+
+        sender.sendMessage(motd.toString());
 
         return true;
     }
