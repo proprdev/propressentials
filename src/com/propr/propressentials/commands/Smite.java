@@ -1,6 +1,6 @@
 package com.propr.propressentials.commands;
 
-import com.propr.propressentials.ProprEssentials;
+import ProprEssentials;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
@@ -20,8 +20,12 @@ public class Smite implements CommandExecutor {
         } else {
             if (Bukkit.getPlayer(args[0]) != null) {
 
-                Player idiot = (Player)sender;
+                Player idiot = Bukkit.getPlayer(args[0]);
 
+                if (idiot == null) {
+                    sender.sendMessage(ChatColor.RED + args[0] + "is not online!");
+                    return true;
+                }
                 idiot.getWorld().strikeLightning(idiot.getLocation());
                 sender.sendMessage(ChatColor.DARK_RED + idiot.getName() + " has been smited!");
             }

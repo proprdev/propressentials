@@ -1,7 +1,6 @@
 package com.propr.propressentials.commands.teleport;
 
-import com.propr.propressentials.ProprEssentials;
-import com.sun.istack.internal.NotNull;
+import ProprEssentials;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
@@ -12,7 +11,7 @@ import org.bukkit.entity.Player;
 public class tphere implements CommandExecutor {
 
     @Override
-    public boolean onCommand(CommandSender sender, Command command, String label, @NotNull String[] args) {
+    public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (sender instanceof Player) {
 
             Player host = (Player)sender;

@@ -1,6 +1,6 @@
 package com.propr.propressentials.commands;
 
-import com.propr.propressentials.ProprEssentials;
+import ProprEssentials;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
